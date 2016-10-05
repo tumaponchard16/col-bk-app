@@ -79,11 +79,24 @@ app.delete('/api/books/:_id', function(req, res){
 	});
 });
 
+//Get all books by genre ID
+app.get('/api/books/genres/:_id', function(req, res){
+	Book.find({genre: req.params._id})
+		.populate('genre')
+		.exec(function(err, books){
+		if(err){
+			throw err;
+		}
+		res.json(books);
+		console.log(books);
+	});
+});
+
 ///////////////////////////////////GENRE//////////////////////////////////////////////////////
 
 //Return all Genre
 app.get('/api/genres', function(req, res){
-	Genre.getGenres(function(err, genres){
+	Genre.find(function(err, genres){
 		if(err){
 			throw err;
 		}
@@ -104,13 +117,14 @@ app.post('/api/genres', function(req, res){
 
 //Get genre by id
 app.get('/api/genres/:_id', function(req, res){
-	Genre.getGenreById(req.params._id, function(err, genre){
+	Genre.findById(req.params._id, function(err, genre){
 		if(err){
 			throw err;
 		}
 		res.json(genre);
 	});
 });
+
 
 // Update genre
 app.put('/api/genres/:_id', function(req, res){

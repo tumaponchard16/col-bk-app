@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 
+var Schema = mongoose.Schema;
+
 //Genre schema
-var genreSchema = mongoose.Schema({
+var genreSchema = Schema({
 	name:{
 		type: String,
 		required: true
@@ -15,14 +17,19 @@ var genreSchema = mongoose.Schema({
 var Genre = module.exports = mongoose.model('Genre', genreSchema);
 
 //Get Genres
-module.exports.getGenres = function(callback, limit){
+/*module.exports.getGenres = function(callback, limit){
 	Genre.find(callback).limit(limit);
-}
+}*/
 
-//Get Book by ID
-module.exports.getGenreById = function(id, callback){
+//Get genre by ID
+/*module.exports.getGenreById = function(id, callback){
 	Genre.findById(id, callback);
-}
+}*/
+
+//Get Books by Genres
+/*module.exports.getBooksByGenre = function(id, callback){
+	Genre.find({books: id}, callback);
+}*/
 
 //Add Genre
 module.exports.addGenre = function(genre, callback){

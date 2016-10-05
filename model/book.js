@@ -8,31 +8,17 @@ var bookSchema = new Schema({
 		type: String,
 		required: true
 	},
-	description:{
-		type: String
-	},
 	author:{
 		type: String,
 		required: true
 	},
-	publisher:{
-		type: String
-	},
-	pages:{
-		type: String
-	},
-	img_url:{
-		type: String
-	},
-	buy_url:{
-		type: String
+	genre:{ 
+		type: Schema.Types.ObjectId, 
+		ref: 'Genre' 
 	},
 	create_date:{
 		type: Date,
 		default: Date.now
-	},
-	genre:{
-		type: String
 	}
 });
 
