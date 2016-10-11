@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',['ngRoute']);
 
-myApp.config(function($routeProvider){
+myApp.config(function($routeProvider, $locationProvider){
 	$routeProvider.when('/', {
 		controller:'BooksController',
 		templateUrl: 'views/books.html'
@@ -24,5 +24,8 @@ myApp.config(function($routeProvider){
 	.otherwise({
 		redirectTo: '/'
 	});
-	// $locationProvider.html5Mode(true);
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: false
+	});
 });
